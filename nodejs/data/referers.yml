@@ -86,6 +86,10 @@ email:
 
 social:
 
+  yummly:
+    domains:
+      - '*.yummly.com'
+      
   feedly:
     domains:
       - '*.feedly.com'
