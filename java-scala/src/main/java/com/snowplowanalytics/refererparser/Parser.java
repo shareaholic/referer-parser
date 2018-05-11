@@ -259,16 +259,24 @@ public class Parser {
   }
 
   private static boolean isSameReferer(String domain, RefererLookup referer, String host, String path) {
-    domain = domain.replace("*.", "");
-    domain = domain.replace(".*", "");
+    domain = domain.replace("*.", ".");
+    domain = domain.replace(".*", ".");
     String[] parts = domain.split("/");
+
+    // For prefix matches, we want "*.bar.com" to match "bar.com", "foo.bar.com", but not "foobar.com". By prefixing
+    // with ".", we turn each case into ".bar.com", ".foo.bar.com", ".foobar.com" and can easily do an endsWith against
+    // ".bar.com" to get our match. Similar logic applies for suffixes.
+
     if (referer.anyPrefix && referer.anySuffix) {
+      host = "." + host + ".";
       return host.contains(parts[0]) && (parts.length == 1 || path.contains(parts[1]));
     }
     if (referer.anyPrefix) {
+        host = "." + host;
         return host.endsWith(parts[0]) && (parts.length == 1 || path.contains(parts[1]));
     }
     if (referer.anySuffix) {
+      host = host + ".";
       return host.startsWith(parts[0]) && (parts.length == 1 || path.contains(parts[1]));
     }
     return false;
