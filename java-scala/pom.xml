@@ -10,7 +10,7 @@
     <groupId>com.snowplowanalytics</groupId>
     <artifactId>referer-parser</artifactId>
     <description>Library for extracting marketing attribution data from referer URLs</description>
-    <version>0.1.5</version>
+    <version>0.1.6</version>
     <packaging>jar</packaging>
 
     <organization>
