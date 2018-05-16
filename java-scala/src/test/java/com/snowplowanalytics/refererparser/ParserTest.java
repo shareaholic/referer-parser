@@ -39,6 +39,14 @@ public class ParserTest {
         actual = parser.parse(referer, "");
         assertEquals(Medium.SOCIAL, actual.medium);
         assertEquals("Both", actual.source);
+        referer = "http://preboth.com";
+        actual = parser.parse(referer, "");
+        assertEquals(Medium.UNKNOWN, actual.medium);
+        assertEquals("", actual.source);
+        referer = "http://bothpost.com";
+        actual = parser.parse(referer, "");
+        assertEquals(Medium.UNKNOWN, actual.medium);
+        assertEquals("", actual.source);
     }
 
     @Test
@@ -64,6 +72,10 @@ public class ParserTest {
         assertEquals(Medium.UNKNOWN, actual.medium);
         assertEquals("", actual.source);
         referer = "http://twitter.com.uk";
+        actual = parser.parse(referer, "");
+        assertEquals(Medium.UNKNOWN, actual.medium);
+        assertEquals("", actual.source);
+        referer = "http://atwitter.com";
         actual = parser.parse(referer, "");
         assertEquals(Medium.UNKNOWN, actual.medium);
         assertEquals("", actual.source);

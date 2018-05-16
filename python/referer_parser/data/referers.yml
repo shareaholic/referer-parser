@@ -671,6 +671,7 @@ social:
   linkedin:
     domains:
       - '*.linkedin.com'
+      - '*.lnkd.in'
     
       
   bebo:
@@ -907,6 +908,15 @@ social:
     domains:
       - weibo.com
       - t.cn
+
+  instagram:
+    domains:
+      - '*.instagram.com'
+
+  youtube:
+    domains:
+      - '*.youtube.com'
+      - 'youtu.be'
       
 
 # #######################################################################################################
